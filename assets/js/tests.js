@@ -1,3 +1,5 @@
+// js/tests.js
+
 async function runTests() {
   const resultsDiv = document.createElement('div');
   resultsDiv.id = 'test-results';
@@ -17,7 +19,7 @@ async function runTests() {
   document.body.prepend(resultsDiv);
 
   try {
-    const response = await fetch('data/projects.json');
+    const response = await fetch('data/projects.json');  // Ruta actualizada
     const projects = await response.json();
 
     addResult("El archivo JSON fue cargado correctamente.", true);
@@ -41,7 +43,7 @@ async function runTests() {
       addResult(`Proyecto ${index + 1} tiene una URL: ${!!project.url}`, !!project.url);
     });
 
-    console.log("✅ All tests completed.");
+    console.log("✅ Todos los tests se completaron.");
   } catch (error) {
     addResult(`❌ Error al cargar proyectos: ${error}`, false);
     console.error(error);
