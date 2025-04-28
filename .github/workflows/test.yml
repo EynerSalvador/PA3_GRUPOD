@@ -1,0 +1,33 @@
+name: Test Jasmine
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Run Jasmine tests
+        run: |
+          npm test
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: jasmine-test-results
+          path: jasmine/test-results.xml
